@@ -1,4 +1,4 @@
-﻿namespace _01_OOP_050_Lanovka
+﻿namespace _01_OOP_051_Lanovka_ukazatele
 {
     internal class Program
     {
@@ -12,9 +12,6 @@
 
             Console.WriteLine(lanovka.Nastup(pepa));
             lanovka.Jed();
-
-
-
         }
     }
 }
