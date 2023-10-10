@@ -11,7 +11,22 @@
             Clovek lojza = new Clovek(120, "Lojza");
 
             Console.WriteLine(lanovka.Nastup(pepa));
+            Console.WriteLine(lanovka.Nastup(franta));
             lanovka.Jed();
+
+            Console.WriteLine(lanovka.Nastup(franta));
+            lanovka.Jed();
+
+            Console.WriteLine(lanovka.Nastup(lojza));
+            lanovka.Jed();
+
+            Console.WriteLine(lanovka.Vystup().Jmeno);
+
+            lanovka.Jed();
+            Console.WriteLine(lanovka.Vystup().Jmeno);
+
+            lanovka.Jed();
+            //Console.WriteLine(lanovka.Vystup().Jmeno);
         }
     }
 }

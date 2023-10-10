@@ -45,6 +45,7 @@ namespace _01_OOP_051_Lanovka_ukazatele
         {
             Delka = delka;
             Nosnost = nosnost;
+            _dolniSedacka = 0;
 
             _sedacky = new Clovek[delka];
 
@@ -58,7 +59,7 @@ namespace _01_OOP_051_Lanovka_ukazatele
             if (Zatizeni + clovek.Hmotnost > Nosnost)
                 return false;
 
-            _sedacky[0] = clovek;
+            _sedacky[_dolniSedacka] = clovek;
             return true;
         }
 
