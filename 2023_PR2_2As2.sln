@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-OOP2-010-Savec", "02-OOP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-OOP2-020-Konstruktor-bazove", "02-OOP2-020-Konstruktor-bazove\02-OOP2-020-Konstruktor-bazove.csproj", "{A40DB356-8023-45B5-A558-5203789EBB91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-OOP2-cv-010-Obdelnik-a-ctverec", "02-OOP2-cv-010-Obdelnik-a-ctverec\02-OOP2-cv-010-Obdelnik-a-ctverec.csproj", "{677F2817-E077-4DEC-AADF-9A156DD28BD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{A40DB356-8023-45B5-A558-5203789EBB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A40DB356-8023-45B5-A558-5203789EBB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A40DB356-8023-45B5-A558-5203789EBB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677F2817-E077-4DEC-AADF-9A156DD28BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677F2817-E077-4DEC-AADF-9A156DD28BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677F2817-E077-4DEC-AADF-9A156DD28BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677F2817-E077-4DEC-AADF-9A156DD28BD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{A7CBD2E3-6EEE-4A5E-8420-99F1AA73A307} = {1784D09D-F511-4F12-ADD2-717E9A87BACA}
 		{63E46DEE-0D4C-40CF-AF95-667BFDA8702A} = {6E33546E-44ED-4229-AF86-CD96E7FF0348}
 		{A40DB356-8023-45B5-A558-5203789EBB91} = {6E33546E-44ED-4229-AF86-CD96E7FF0348}
+		{677F2817-E077-4DEC-AADF-9A156DD28BD3} = {6E33546E-44ED-4229-AF86-CD96E7FF0348}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA649241-65FA-44DE-AE3D-F3ADE7F0080B}
