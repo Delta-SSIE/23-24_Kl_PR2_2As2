@@ -1,4 +1,4 @@
-﻿namespace _02_OOP2_020_Konstruktor_bazove
+﻿namespace _02_OOP2_030_Abstraktni_savec
 {
     internal class Program
     {
@@ -10,19 +10,21 @@
             //ferda.SajMleko();
             //ferda.Jmeno = "Karel"; //nelze - je chráněno
 
-            Savec[] savci = new Savec[3];
-            savci[0] = new Kun("Ferda");
-            savci[1] = new Kun("Kobyl");
-            savci[2] = new Velryba("Charles");
+            //Savec[] savci = new Savec[3];
+            //savci[0] = new Kun("Ferda");
+            //savci[1] = new Kun("Kobyl");
+            //savci[2] = new Velryba("Charles");
 
-            foreach(Savec savec in savci)
-            {
-                savec.PredstavSe();
-            }
+            //foreach (Savec savec in savci)
+            //{
+            //    savec.PredstavSe();
+            //}
+
+            //Savec kuliferda = new Savec();// abstraktní třída nesmí mít instanci
 
         }
     }
-    class Savec //bázová třída ... to společné
+    abstract class Savec //bázová třída ... to společné
     {
         protected string Jmeno { get; set; } //i dědící třídy mohou vidět/měnit
         public Savec(string jmeno)
@@ -37,10 +39,7 @@
         {
             Console.WriteLine("... ... ...");
         }
-        public virtual void PredstavSe()
-        {
-            Console.WriteLine($"Já jsem savec");
-        }
+        public abstract void PredstavSe();
     }
 
     class Kun : Savec //odvozená třída ... to, čím se liší od bázové
@@ -52,12 +51,12 @@
         {
             Console.WriteLine("Kopyta pádí");
         }
-        public override void PredstavSe()
-        {
-            Console.WriteLine($"Já jsem {Jmeno}, íhahá"); 
-            //jméno je dostupné, i když kód není přímo ve třídě savec.
-            //Protected připouští i dědící třídu
-        }
+        //public override void PredstavSe()
+        //{
+        //    Console.WriteLine($"Já jsem {Jmeno}, íhahá");
+        //    //jméno je dostupné, i když kód není přímo ve třídě savec.
+        //    //Protected připouští i dědící třídu
+        //}
     }
 
     class Velryba : Savec
