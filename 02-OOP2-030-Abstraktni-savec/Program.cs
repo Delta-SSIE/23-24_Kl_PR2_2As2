@@ -10,15 +10,15 @@
             //ferda.SajMleko();
             //ferda.Jmeno = "Karel"; //nelze - je chráněno
 
-            //Savec[] savci = new Savec[3];
-            //savci[0] = new Kun("Ferda");
-            //savci[1] = new Kun("Kobyl");
-            //savci[2] = new Velryba("Charles");
+            Savec[] savci = new Savec[3];
+            savci[0] = new Kun("Ferda");
+            savci[1] = new Kun("Kobyl");
+            savci[2] = new Velryba("Charles");
 
-            //foreach (Savec savec in savci)
-            //{
-            //    savec.PredstavSe();
-            //}
+            foreach (Savec savec in savci)
+            {
+                savec.PredstavSe();
+            }
 
             //Savec kuliferda = new Savec();// abstraktní třída nesmí mít instanci
 
@@ -51,12 +51,12 @@
         {
             Console.WriteLine("Kopyta pádí");
         }
-        //public override void PredstavSe()
-        //{
-        //    Console.WriteLine($"Já jsem {Jmeno}, íhahá");
-        //    //jméno je dostupné, i když kód není přímo ve třídě savec.
-        //    //Protected připouští i dědící třídu
-        //}
+        public override void PredstavSe()
+        {
+            Console.WriteLine($"Já jsem {Jmeno}, íhahá");
+            //jméno je dostupné, i když kód není přímo ve třídě savec.
+            //Protected připouští i dědící třídu
+        }
     }
 
     class Velryba : Savec
