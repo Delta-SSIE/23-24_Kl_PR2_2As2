@@ -8,10 +8,10 @@ namespace _03_OOP2_cv_080_Inventory
 {
     internal class StackableItem : Item
     {
-        private double _singleItemWeight;
+        public double SingleItemWeight { get; private set; }
         public StackableItem(string name, double weight, int count = 1)
         {
-            _singleItemWeight = weight;
+            SingleItemWeight = weight;
             Name = name;
             Count = count;
         }
@@ -22,7 +22,7 @@ namespace _03_OOP2_cv_080_Inventory
         {
             get
             {
-                return Count * _singleItemWeight;
+                return Count * SingleItemWeight;
             }
         }
 
