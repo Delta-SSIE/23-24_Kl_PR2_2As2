@@ -37,6 +37,8 @@ namespace _03_OOP2_cv_080_Inventory
             }
         }
 
+        private Dice _dice = new Dice(6);
+
         public Character(string name, double maxWeight, int maxHP)
         {
             Name = name;
@@ -152,28 +154,28 @@ namespace _03_OOP2_cv_080_Inventory
             if (!_inventory.Contains(item))
                 throw new Exception($"Cannot equip {item.Name}, not holding it");
 
-            if (item is Weapon)
+            if (item is Weapon weapon)
             {
                 if (RightHand != null)
                     _inventory.Add(RightHand);
 
-                RightHand = (Weapon)item;
-                _inventory.Remove(item);
+                RightHand = weapon;
+                _inventory.Remove(weapon);
             }
-            else if (item is Shield)
+            else if (item is Shield shield)
             {
                 if (LeftHand != null)
                     _inventory.Add(LeftHand);
 
-                LeftHand = (Shield)item;
+                LeftHand = shield;
                 _inventory.Remove(item);
             }
-            else if (item is Armor)
+            else if (item is Armor armor)
             {
                 if (Wearing != null)
                     _inventory.Add(Wearing);
 
-                Wearing = (Armor)item;
+                Wearing = armor;
                 _inventory.Remove(item);
             }
             else
@@ -182,15 +184,35 @@ namespace _03_OOP2_cv_080_Inventory
             }
         }
 
-        public int Attack(Dice d)
+        public void Unequip(Item item)
         {
-            if (RightHand == null) //prázdná ruka má útok 0
-                return d.Throw();
+            if (RightHand == item)
+            {
+                RightHand = null;
+                _inventory.Add(item);
+            }
+            else if (LeftHand == item)
+            {
+                LeftHand = null;
+                _inventory.Add(item);
+            }
+            else if (Wearing == item)
+            {
+                Wearing = null;
+                _inventory.Add(item);
+            }
 
-            return RightHand.Attack + d.Throw();
         }
 
-        public int Defend(Dice d)
+        public int Attack()
+        {
+            if (RightHand == null) //prázdná ruka má útok 0
+                return _dice.Throw();
+
+            return RightHand.Attack + _dice.Throw();
+        }
+
+        private int Defend()
         {
             int defense = 0;
             
@@ -200,9 +222,21 @@ namespace _03_OOP2_cv_080_Inventory
             if (Wearing != null)
                 defense += Wearing.Defense;
 
-            defense += d.Throw();
+            defense += _dice.Throw();
 
             return defense;
+        }
+
+        public int ManageAttack(int attack)
+        {
+            int defense = this.Defend();
+            int wound = Math.Max(0, attack - defense); //abych úderem neléčil
+            
+            HP -= wound;
+            if (HP < 0)
+                HP = 0;
+
+            return wound;
         }
     }
 }
