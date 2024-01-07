@@ -25,8 +25,8 @@
             ahmed.Equip(shield);
 
             FileLogger logger = new FileLogger("zaznam.txt");
-            //Combat combat = new Combat(mehmet, ahmed, new ConsoleLogger() );
-            Combat combat = new Combat(mehmet, ahmed, logger );
+            Combat combat = new Combat(mehmet, ahmed, new ConsoleLogger());
+            //Combat combat = new Combat(mehmet, ahmed, logger );
 
             combat.Fight();
 
