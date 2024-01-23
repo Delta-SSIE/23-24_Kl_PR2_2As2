@@ -15,7 +15,7 @@ namespace _03_OOP3_06_Hanojska_vez
         private Stack<int> middleTower = new Stack<int>();
         private Stack<int> rightTower = new Stack<int>();
 
-        public bool Solved => rightTower.Count == Size; //vše je vpravo
+        public bool IsSolved => rightTower.Count == Size; //vše je vpravo
 
         public Puzzle(int size)
         {
