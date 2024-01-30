@@ -84,33 +84,87 @@ namespace _03_OOP3_06_Hanojska_vez
             };
         }
 
+        //public void Render()
+        //{
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        Console.Write(i + ": ");
+        //        RenderTower(i);
+        //        Console.WriteLine();
+        //    }
+        //    Console.WriteLine();
+        //}
+
+        //private void RenderTower(int number)
+        //{
+        //    //Stack<int> tower = GetTower(number);
+        //    //foreach(int disc in tower)
+        //    //{
+        //    //    Console.Write(disc + " ");
+        //    //}
+
+        //    int[] discs = GetTower(number).ToArray();
+        //    Array.Reverse(discs);
+        //    Console.Write(string.Join(" ", discs));
+
+        //    //for (int i = discs.Length - 1; i >= 0; i--)
+        //    //{
+        //    //    Console.Write(discs[i] + " ");
+        //    //}
+        //}
+
         public void Render()
         {
+            int baseY = Console.CursorTop + 1;
+
             for (int i = 0; i < 3; i++)
             {
-                Console.Write(i + ": ");
-                RenderTower(i);
-                Console.WriteLine();
+                int baseX = 2 * i * (Size + 1) + 1;
+
+                Stack<int> tower = GetTower(i);
+                RenderTower(tower, baseX, baseY);
             }
-            Console.WriteLine();
+
+
         }
 
-        private void RenderTower(int number)
+        private void RenderTower(Stack<int> tower, int x, int topY)
         {
-            //Stack<int> tower = GetTower(number);
-            //foreach(int disc in tower)
-            //{
-            //    Console.Write(disc + " ");
-            //}
-            
-            int[] discs = GetTower(number).ToArray();
-            Array.Reverse(discs);
-            Console.Write(string.Join(" ", discs));
+            int y = topY;
 
-            //for (int i = discs.Length - 1; i >= 0; i--)
-            //{
-            //    Console.Write(discs[i] + " ");
-            //}
+            int emptyRows = Size - tower.Count;
+            for (int i = 0; i < emptyRows; i++)
+            {
+                RenderDisc(0, x, y);
+                y++;
+            }
+            foreach (int disc in tower)
+            {
+                RenderDisc(disc, x, y);
+                y++;
+            }
+            RenderBase(x, y);
+
+
+        }
+        private void RenderDisc(int disc, int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            if (disc > 0)
+            {
+                Console.Write(new string(' ', Size - disc));
+                Console.Write(new string('#', 2 * disc - 1));
+            }
+            else
+            {
+                Console.Write(new string(' ', Size - 1));
+                Console.Write('|');
+            }
+        }
+        private void RenderBase(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(new string('=', 2 * Size - 1));
         }
     }
 }
