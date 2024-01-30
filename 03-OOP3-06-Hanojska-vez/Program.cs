@@ -6,14 +6,22 @@
         {
             Puzzle puzzle = new Puzzle(5);
             puzzle.Render();
-            puzzle.Move(0, 2);
+            Console.WriteLine();
+            
+            puzzle.Solve();
+
+            Console.Clear();
             puzzle.Render();
-            puzzle.Move(0, 1);
-            puzzle.Render();
-            puzzle.Move(2, 1);
-            puzzle.Render();
-            puzzle.Move(0, 2);
-            puzzle.Render();
+            Console.WriteLine();
+
+            //puzzle.Move(0, 2);
+            //puzzle.Render();
+            //puzzle.Move(0, 1);
+            //puzzle.Render();
+            //puzzle.Move(2, 1);
+            //puzzle.Render();
+            //puzzle.Move(0, 2);
+            //puzzle.Render();
 
         }
     }

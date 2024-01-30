@@ -166,5 +166,33 @@ namespace _03_OOP3_06_Hanojska_vez
             Console.SetCursorPosition(x, y);
             Console.Write(new string('=', 2 * Size - 1));
         }
+
+        public void Solve()
+        {
+            MoveTower(0, 2, Size);
+        }
+
+        public void MoveTower(int from, int to, int height)
+        {
+            //najdi "třetí" kolík
+            int third = 3 - from - to;
+
+            //kolik se toho bude přesouvat na třetí
+            int remains = height - 1;
+
+            //přesuň na něj to, co leží na spodním disku
+            if (remains > 0) 
+                MoveTower(from, third, remains);
+
+            //přesuň spodní disk na cíl
+            Console.Clear();
+            Render();
+            System.Threading.Thread.Sleep(250);
+            Move(from, to);
+
+            //přesuň z dočasného na cíl
+            if (remains > 0)
+                MoveTower(third, to, remains);
+        }
     }
 }
