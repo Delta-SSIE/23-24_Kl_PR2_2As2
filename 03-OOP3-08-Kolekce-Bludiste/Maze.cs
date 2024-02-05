@@ -11,8 +11,8 @@ namespace _03_Kolekce_02_Bludiste
         public int Width { get; private set; }
         public int Height { get; private set; }
         private Coords _entrance;
-        private TileType[,] _map;
-        private MazeDisplay _display;
+        private TileType[,] _map = null;
+        private MazeDisplay _display = null;
 
         public void LoadMaze(string filename)
         {
