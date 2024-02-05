@@ -6,8 +6,6 @@
         {
             Maze maze = new Maze();
             maze.LoadMaze("maze.txt");
-            maze.RenderMaze();
-            maze.SolveMaze(new PlaceStack ());
         }
     }
 }

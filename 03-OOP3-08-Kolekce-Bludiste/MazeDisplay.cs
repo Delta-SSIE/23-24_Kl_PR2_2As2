@@ -27,17 +27,16 @@ namespace _03_Kolekce_02_Bludiste
             {
                 TileType.Wall => ConsoleColor.White,
                 TileType.Corridor => ConsoleColor.Black,
-                TileType.Visited => ConsoleColor.DarkYellow,
                 TileType.Entrance => ConsoleColor.Red,
                 TileType.Exit => ConsoleColor.Green,
                 _ => ConsoleColor.Black,
             };
-            Console.SetCursorPosition(2 * (Left + coords.X) + 1, Top + coords.Y + 1); //2 * x proto, aby byly dílky zhruba čtvercové
+            Console.SetCursorPosition(2 * (Left + coords.X), Top + coords.Y); //2 * x proto, aby byly dílky zhruba čtvercové
             Console.Write("  ");
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        public void PlaceCursorBelow()
+        public void WrapUp()
         {
             Console.SetCursorPosition(0, Top + Height + 1);
         }
