@@ -9,8 +9,22 @@
 
             //Salesman search = FindSalesmanRecursive(boss, "Benny", "MacSweeney");
             //Salesman search = FindSalesmanStack(boss, "Benny", "MacSweeney");
-            Salesman search = FindSalesmanQueue(boss, "Benny", "MacSweeney");
-            Console.WriteLine($"{search.Name} {search.Surname} : {search.Sales}");
+            //Salesman search = FindSalesmanQueue(boss, "Benny", "MacSweeney");
+            //Console.WriteLine($"{search.Name} {search.Surname} : {search.Sales}");
+
+            Salesman will = FindSalesmanQueue(boss, "William", "Brown");
+            int total = GetTotalSales(will);
+            Console.WriteLine($"{will.Name} {will.Surname} - sales: {will.Sales}, total sales (Stack): {total}");
+
+            total = GetTotalSalesRecursive(will);
+            Console.WriteLine($"{will.Name} {will.Surname} - sales: {will.Sales}, total sales (Recursive): {total}");
+
+            Console.WriteLine();
+
+            Salesman benny = FindSalesmanQueue(boss, "Benny", "MacSweeney");
+            total = GetTotalSalesRecursive(benny);
+            Console.WriteLine($"{benny.Name} {benny.Surname} - sales: {benny.Sales}, total sales (Recursive): {total}");
+
 
             Console.WriteLine();
             DisplaySalesmenTree(boss);
@@ -37,7 +51,7 @@
             {
                 //vyjmi ho
                 Salesman person = listToSearch.Pop();
-                Console.WriteLine($"Current: {person.Name} {person.Surname}");
+                //Console.WriteLine($"Current: {person.Name} {person.Surname}"); //jen dump, abych viděl, kudy prohledávám
 
                 //prohledej
                 if (person.Name == name && person.Surname == surname)
@@ -65,7 +79,7 @@
             {
                 //vyjmi ho
                 Salesman person = listToSearch.Dequeue();
-                Console.WriteLine($"Current: {person.Name} {person.Surname}");
+                //Console.WriteLine($"Current: {person.Name} {person.Surname}"); //jen dump, abych viděl, kudy prohledávám
 
                 //prohledej
                 if (person.Name == name && person.Surname == surname)
@@ -100,6 +114,49 @@
 
             //nenašel jsi? vrať null
             return null;
+        }
+
+        static int GetTotalSales(Salesman salesman)
+        {
+            //na seznam uzlů k prohledání si napiš kořenový prvek
+            Stack<Salesman> listToSearch = new Stack<Salesman>();
+            listToSearch.Push(salesman);
+            int totalSales = 0;
+
+            //dokud na seznamu někdo je,
+            while (listToSearch.Count > 0)
+            {
+                //vyjmi ho
+                Salesman current = listToSearch.Pop();
+                //Console.WriteLine($"Current: {current.Name} {current.Surname}"); //jen dump, abych viděl, kudy prohledávám
+
+                //přidej jeho  prodeje
+                totalSales += current.Sales;
+
+                //přidej na seznam všechny jeho podřízené
+                foreach (Salesman sub in current.Subordinates)
+                {
+                    listToSearch.Push(sub);
+                }
+            }
+
+            //když ho nenajdeš a seznam už je prázdný, vrať null
+            return totalSales;
+        }
+
+        static int GetTotalSalesRecursive(Salesman salesman)
+        {
+            //vezmi moje prodeje
+            int totalSales = salesman.Sales;
+
+            //přičti všechny prodeje všech podřízených
+            foreach (Salesman sub in salesman.Subordinates)
+            {
+                totalSales += GetTotalSalesRecursive(sub);
+            }
+
+            //součet vrať
+            return totalSales;
         }
 
 
