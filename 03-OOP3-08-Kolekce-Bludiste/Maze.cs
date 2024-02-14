@@ -57,5 +57,69 @@ namespace _03_Kolekce_02_Bludiste
             _display.WrapUp();
         }
 
+        public void Solve(IVisitList visitList)
+        {
+
+            //předá mi si seznam míst k projití
+            
+
+            //začni na vstupu
+            visitList.AddPlace(_entrance);
+
+            //postupně procházej všechna místa
+            while (visitList.Count > 0) 
+            {
+                Coords here = visitList.GetPlace();
+                if (_map[here.X, here.Y] == TileType.Noted)
+                    _map[here.X, here.Y] = TileType.Visited;
+
+                //když najdeš cíl, skonči
+                if (_map[here.X, here.Y] == TileType.Exit)
+                    return;
+
+                //jinak přidej na seznam všechny neprojité sousedy
+                Coords[] neighbours = Neighbours(here);
+                foreach (Coords neighbour in neighbours)
+                {
+                    visitList.AddPlace(neighbour); //přidej na seznam
+                    if (_map[neighbour.X, neighbour.Y] == TileType.Corridor)
+                        _map[neighbour.X, neighbour.Y] = TileType.Noted; //poznač si, že už o něm víš
+                }
+
+                Console.ReadKey(); //počkám na klávesu
+                RenderMaze(); //pak vykreslím a udělám další krok
+            }
+        }
+
+        private Coords[] Neighbours(Coords location)
+        {
+            //co můžou být sousedi
+            Coords[] possible =
+            {
+                new Coords(location.X, location.Y + 1),    
+                new Coords(location.X, location.Y - 1),
+                new Coords(location.X - 1, location.Y),
+                new Coords(location.X + 1, location.Y),
+            };
+            
+            List<Coords> result = new();
+            
+            //ověřím, že je má cenu přidat
+            foreach (Coords where in possible)
+            {
+                if (where.X >= 0 && where.Y >= 0 && where.X < Width && where.Y < Height)
+                {
+                    //co tam je?
+                    TileType what = _map[where.X, where.Y];
+
+                    //když to chci, přidám
+                    if (what == TileType.Corridor || what == TileType.Exit)
+                        result.Add(where);
+                }
+            }
+
+            return result.ToArray();
+        }
+
     }
 }

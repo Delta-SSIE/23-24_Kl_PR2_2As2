@@ -29,6 +29,7 @@ namespace _03_Kolekce_02_Bludiste
                 TileType.Corridor => ConsoleColor.Black,
                 TileType.Entrance => ConsoleColor.Red,
                 TileType.Exit => ConsoleColor.Green,
+                TileType.Visited => ConsoleColor.DarkYellow,
                 _ => ConsoleColor.Black,
             };
             Console.SetCursorPosition(2 * (Left + coords.X), Top + coords.Y); //2 * x proto, aby byly dílky zhruba čtvercové
