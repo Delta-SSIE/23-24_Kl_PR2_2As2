@@ -7,7 +7,8 @@
             Maze maze = new Maze();
             maze.LoadMaze("emptymaze.txt");
             //maze.Solve(new StackVisitList());
-            maze.Solve(new RandomVisitList());
+            //maze.Solve(new RandomVisitList());
+            maze.Solve(new CloseVisitList(maze.Exit));
             //maze.Solve(new QueueVisitList());
 
         }
