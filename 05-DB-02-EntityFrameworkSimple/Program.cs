@@ -1,4 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//Tento projekt vyžaduje v nuget manageru přidat balíčky 
+//- EntityFrameworkCore
+//- EntityFrameworkCore.Relational
+//- EntityFrameworkCore.SqlServer
+
+using Microsoft.EntityFrameworkCore;
 
 namespace DB_EF_Simple
 {
