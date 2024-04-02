@@ -17,7 +17,7 @@ namespace DB_EF
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PR2Temp2;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PR2As1;Integrated Security=True");
             }
         }
 

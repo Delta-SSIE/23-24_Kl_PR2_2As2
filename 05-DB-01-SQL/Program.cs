@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿//Tento projekt vyžaduje v nuget manageru přidat balíček System.Data.SqlClient
+using System.Data.SqlClient;
 
 namespace DB_SQL
 {
@@ -6,55 +7,55 @@ namespace DB_SQL
     {
         static void Main(string[] args)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PR2Temp2;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=PR2As1;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
 
             /* Select */
 
-            //Select all
+            ////Select all
             //ShowAllCars(connectionString);
             //Console.WriteLine();
 
             ////Select by brand
-            ShowAllCarsByBrand(connectionString, "Škoda");
-            Console.WriteLine();
+            //ShowAllCarsByBrand(connectionString, "Škoda");
+            //Console.WriteLine();
 
 
             /* CRUD */
 
-            //Insert
+            ////Insert
             //int newCarId = AddCar(connectionString, "1A111A1", "Citroën", "2CV", DateTime.ParseExact("12.7.2023", "d.M.yyyy", null));
             //Console.WriteLine(newCarId);
 
-            //GetAllCars(connectionString);
+            //ShowAllCars(connectionString);
             //Console.WriteLine();
 
             ////Update
             //ModifyCar(connectionString, newCarId, "3E33257", "Škoda", "Zadeq", DateTime.ParseExact("1.7.2019", "d.M.yyyy", null));
-            //SelectAllCars(connectionString);
+            //ShowAllCars(connectionString);
             //Console.WriteLine();
 
             ////Delete
             //DeleteCar(connectionString, newCarId);
-            //SelectAllCars(connectionString);
+            //ShowAllCars(connectionString);
             //Console.WriteLine();
 
 
             /* Play with FK: drivers */
 
-            int carId1 = AddCar(connectionString, "1A111A1", "Citroën", "2CV", DateTime.ParseExact("12.7.2023", "d.M.yyyy", null));
-            int carId2 = AddCar(connectionString, "3E97259", "Ford", "Mondeo", DateTime.ParseExact("29.6.2010", "d.M.yyyy", null));
+            //int carId1 = AddCar(connectionString, "1A111A1", "Citroën", "2CV", DateTime.ParseExact("12.7.2023", "d.M.yyyy", null));
+            //int carId2 = AddCar(connectionString, "3E97259", "Ford", "Mondeo", DateTime.ParseExact("29.6.2010", "d.M.yyyy", null));
 
-            int driverId1 = AddDriver(connectionString, "Thomas", "Pinkerton");
-            int driverId2 = AddDriver(connectionString, "Guybrush", "Threepwood");
+            //int driverId1 = AddDriver(connectionString, "Thomas", "Pinkerton");
+            //int driverId2 = AddDriver(connectionString, "Guybrush", "Threepwood");
 
-            PutDriverToCar(connectionString, carId1, driverId2);
+            //PutDriverToCar(connectionString, carId1, driverId2);
 
-            ShowCarsWithDrivers(connectionString);
+            //ShowCarsWithDrivers(connectionString);
 
-            DeleteDriver(connectionString, driverId1);
-            DeleteDriver(connectionString, driverId2);
-            DeleteCar(connectionString, carId1);
-            DeleteCar(connectionString, carId2);
+            //DeleteDriver(connectionString, driverId1);
+            //DeleteDriver(connectionString, driverId2);
+            //DeleteCar(connectionString, carId1);
+            //DeleteCar(connectionString, carId2);
         }
 
         static void ShowAllCars(string connectionString)
@@ -72,9 +73,10 @@ namespace DB_SQL
                         while (reader.Read())
                         {
                             int id = reader.GetInt32(0);
-                            //string regPlate = reader.GetString(1); 
+
+                            string regPlate = reader.GetString(1);
                             //nebo
-                            string regPlate = (string)reader["RegPlate"];
+                            //string regPlate = (string)reader["RegPlate"];
 
                             string brand = reader.GetString(2);
                             string model = reader.GetString(3);

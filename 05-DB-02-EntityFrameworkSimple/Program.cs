@@ -57,7 +57,7 @@ namespace DB_EF_Simple
                 Console.WriteLine();
             }
 
-            //uklidím po sobě
+            //uklidím po sobě - to bych v realitě nedělal, tam chci mít data trvalá
             using (var dbContext = new MyDbContext())
             {
                 var allCars = dbContext.Cars.ToList();
