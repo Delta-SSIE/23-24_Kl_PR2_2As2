@@ -8,7 +8,7 @@
         Title="Prohlížeč textu" Height="450" Width="800">
 
     <Grid>
-        <ScrollViewer Margin="10,10,10,40">
+        <!--<ScrollViewer Margin="10,10,10,40">
             <TextBlock x:Name="TextDisplay" />
         </ScrollViewer>
         <Button x:Name="LoadBtn" 
@@ -17,9 +17,9 @@
                 Margin="10" 
                 VerticalAlignment="Bottom" 
                 Click="LoadBtn_Click"
-                />
+                />-->
 
-        <!--<Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
@@ -35,7 +35,7 @@
                 VerticalAlignment="Center" 
                 Margin="10" 
                 Click="LoadBtn_Click"
-                />-->
+                />
 
     </Grid>
 
