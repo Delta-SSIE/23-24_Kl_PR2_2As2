@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_06_WPF_08_Calculator"
         mc:Ignorable="d"
+        x:Name="CalcWindow"
+        PreviewKeyDown="CalcWindow_PreviewKeyDown"
         Title="Simple Calculator" Height="450" Width="350">
 
     <Window.Resources>
@@ -52,12 +54,12 @@
                  Grid.Column="0"
                  Grid.ColumnSpan="4"
                  Grid.Row="0"                 
-                 Text="0"
                  FontSize="60pt"
                  FontFamily="Consolas"
                  HorizontalContentAlignment="Right"
                  VerticalContentAlignment="Center"
                  Margin="3"
+                 Text="{Binding ElementName=CalcWindow, Path=CurrentText}"
                  />
 
         <Button x:Name="ACBtn"
@@ -73,6 +75,7 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Style="{StaticResource baseBtnStyle}"
+                Click="plusMinusBtn_Click"
                 />
         <Button x:Name="percentBtn"
                 Content="%"
@@ -86,37 +89,43 @@
                 Grid.Column="3"
                 Grid.Row="1"
                 Style="{StaticResource baseBtnStyle}"
+                Click="operationBtn_Click"
                 />
         <Button x:Name="multiplyBtn"
                 Content="*"
                 Grid.Column="3"
                 Grid.Row="2"
                 Style="{StaticResource baseBtnStyle}"
+                Click="operationBtn_Click"
                 />
         <Button x:Name="minusBtn"
                 Content="-"
                 Grid.Column="3"
                 Grid.Row="3"
                 Style="{StaticResource baseBtnStyle}"
+                Click="operationBtn_Click"
                 />
         <Button x:Name="plusBtn"
                 Content="+"
                 Grid.Column="3"
                 Grid.Row="4"
                 Style="{StaticResource baseBtnStyle}"
+                Click="operationBtn_Click"
                 />
         <Button x:Name="dotBtn"
                 Content=","
                 Grid.Column="1"
                 Grid.Row="5"
                 Style="{StaticResource baseBtnStyle}"
+                Click="dotBtn_Click"
                 />
         <Button x:Name="calculateBtn"
                 Content="="
                 Grid.Column="2"
                 Grid.Row="5"
                 Grid.ColumnSpan="2"
-                Style="{StaticResource baseBtnStyle}"
+                Style="{StaticResource baseBtnStyle}" 
+                Click="calculateBtn_Click"
                 />
 
         <Button x:Name="zeroBtn"
