@@ -7,8 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="Board" Visibility="Visible">
+        <Grid x:Name="SetupPanel" Visibility="Hidden">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="2x2" Click="StartButton_Click"/>
+                <Button Content="3x4" Click="StartButton_Click"/>
+                <Button Content="4x4" Click="StartButton_Click"/>
+            </StackPanel>
+        </Grid>
 
+        <Grid x:Name="GamePanel" Visibility="Hidden">
+            <Grid x:Name="Board">
+
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="ResultsPanel" Visibility="Visible">
+            <Button x:Name="RestartBtn" Content="Znovu" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="204,217,0,0" Click="RestartBtn_Click"/>
+            <Button x:Name="ExitBtn" Content="Ukončit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="340,217,0,0" Click="ExitBtn_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="340,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="cs-cz" Text="Hurá"/></TextBlock>
         </Grid>
     </Grid>
 </Window>

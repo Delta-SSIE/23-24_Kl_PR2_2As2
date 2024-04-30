@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:_06_WPF_09_Pexeso"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             x:Name="Card"
              d:DesignHeight="450" d:DesignWidth="800">
     <Border BorderThickness="2" BorderBrush="Black" Margin="3" Cursor="Hand">
         <Grid Background="Gray">
 
             <Viewbox>
-                <Label x:Name="SymbolLbl" Content="X"/>
+                <Label x:Name="SymbolLbl" Content="{Binding ElementName=Card, Path=Symbol}"/>
             </Viewbox>
 
             <Rectangle x:Name="CardBack" Fill="SandyBrown" Margin="0"/>

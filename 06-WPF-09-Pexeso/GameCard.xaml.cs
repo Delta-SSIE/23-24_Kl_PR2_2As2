@@ -20,6 +20,19 @@ namespace _06_WPF_09_Pexeso
     /// </summary>
     public partial class GameCard : UserControl
     {
+        public bool IsFlipped => CardBack.Visibility == Visibility.Hidden;
+
+        public string Symbol
+        {
+            get { return (string)GetValue(SymbolProperty); }
+            set { SetValue(SymbolProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Symbol.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SymbolProperty =
+            DependencyProperty.Register("Symbol", typeof(string), typeof(GameCard), new PropertyMetadata(""));
+
+
         public GameCard()
         {
             InitializeComponent();
