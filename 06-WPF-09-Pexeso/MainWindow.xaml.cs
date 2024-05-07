@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace _06_WPF_09_Pexeso
 {
@@ -16,7 +17,9 @@ namespace _06_WPF_09_Pexeso
     /// </summary>
     public partial class MainWindow : Window
     {
-        enum Stage { Setup, NoCardFlipped, OneCardFlipped, Results }
+        enum Stage { Setup, NoCardFlipped, OneCardFlipped, WaitForFlipBack, Results }
+
+        const int FlipBackDelay = 500; //milliseconds
 
         private int _rows;
         private int _cols;
@@ -25,11 +28,23 @@ namespace _06_WPF_09_Pexeso
         private GameCard _firstCard;
         private GameCard _secondCard;
 
+        private DispatcherTimer _timer;
+
 
         public MainWindow()
         {
             InitializeComponent();
             UpdateVisibility();
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(FlipBackDelay);
+            _timer.Tick += FlipCardsBack;
+
+        }
+
+        private void FlipCardsBack(object? sender, EventArgs e)
+        {
+            NextStage();
         }
 
         private void NextStage()
@@ -57,11 +72,19 @@ namespace _06_WPF_09_Pexeso
                         Board.Children.Remove(_secondCard);
                     }
                     //nebo otoč zpět
-                    else
-                    {
-                        _firstCard.Flip();
-                        _secondCard.Flip();
-                    }
+                    //else
+                    //{
+                        //spusť timer
+                        _timer.Start();
+                        _stage = Stage.WaitForFlipBack;
+                    //}
+
+                    break;
+
+                case Stage.WaitForFlipBack:
+                    _timer.Stop();
+                    _firstCard.Flip();
+                    _secondCard.Flip();
 
                     //když zbývají karty, vrať se
                     if (Board.Children.Count > 0)
