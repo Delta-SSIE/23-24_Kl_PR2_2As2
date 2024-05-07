@@ -64,7 +64,13 @@ namespace _06_WPF_09_Pexeso
                     break;
 
                 case Stage.OneCardFlipped:
-                    //buď jsou otočeny stejné
+                    _timer.Start();
+                    _stage = Stage.WaitForFlipBack;
+                    break;
+
+                case Stage.WaitForFlipBack:
+                    _timer.Stop();
+
                     if (_firstCard.Symbol == _secondCard.Symbol)
                     {
                         //pak smaž
@@ -72,19 +78,11 @@ namespace _06_WPF_09_Pexeso
                         Board.Children.Remove(_secondCard);
                     }
                     //nebo otoč zpět
-                    //else
-                    //{
-                        //spusť timer
-                        _timer.Start();
-                        _stage = Stage.WaitForFlipBack;
-                    //}
-
-                    break;
-
-                case Stage.WaitForFlipBack:
-                    _timer.Stop();
-                    _firstCard.Flip();
-                    _secondCard.Flip();
+                    else
+                    {
+                        _firstCard.Flip();
+                        _secondCard.Flip();
+                    }
 
                     //když zbývají karty, vrať se
                     if (Board.Children.Count > 0)
@@ -192,7 +190,11 @@ namespace _06_WPF_09_Pexeso
         private void UpdateVisibility()
         {
             SetupPanel.Visibility = _stage == Stage.Setup ? Visibility.Visible : Visibility.Hidden;
-            GamePanel.Visibility = (_stage == Stage.NoCardFlipped || _stage == Stage.OneCardFlipped) ? Visibility.Visible : Visibility.Hidden;
+            GamePanel.Visibility = (
+                _stage == Stage.NoCardFlipped 
+                || _stage == Stage.OneCardFlipped
+                || _stage == Stage.WaitForFlipBack
+            ) ? Visibility.Visible : Visibility.Hidden;
             ResultsPanel.Visibility = _stage == Stage.Results ? Visibility.Visible : Visibility.Hidden;
         }
 
